@@ -1,0 +1,22 @@
+{
+  "services": {
+    "app": {
+      "root": ".",
+      "entrypoint": "backend/index.js",
+      "framework": "express",
+      "buildCommand": "npm run build",
+      "includeFiles": [
+        "backend/dist/**"
+      ]
+    }
+  },
+
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "app"
+      }
+    }
+  ]
+}
