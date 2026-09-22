@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3001/api/notes'
+const baseURL = process.env.API_URL || 'http://localhost:3001'
 
 const getAll = () => {
   return axios
