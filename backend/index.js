@@ -5,6 +5,7 @@ const app = express()
 
 // middlewares
 app.use(cors())
+app.use(express.static('dist'))
 app.use(express.json())
 
 let notes = [
@@ -26,11 +27,7 @@ let notes = [
 ]
 
 // routes
-app.get('/', (req, res) => {
-  res.redirect('/health')
-})
-
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   return res.json({
 		status: 'ok'
 	})

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 import Footer from './components/Footer'
 import Notification from './components/Notification'
@@ -7,9 +6,10 @@ import Note from './components/Note'
 
 import noteService from './services/notes'
 
-const App = ({ notesList }) => {
+const App = () => {
   const [ notes, setNotes ] = useState(null)
   const [ newNote, setNewNote ] = useState('')
+  const [ isImportant, setIsImportant ] = useState(false)
   const [ showAll, setShowAll ] = useState(true)
   const [ errorMessage, setErrorMessage ] = useState(null)
 
@@ -26,12 +26,13 @@ const App = ({ notesList }) => {
     event.preventDefault()
     const noteObject = {
       content: newNote,
-      important: Math.random() < 0.5
+      important: isImportant
     }
     noteService.create(noteObject)
       .then(createdNote => {
         setNotes([...notes, createdNote])
         setNewNote('')
+        setIsImportant(false)
       })
   }
 
@@ -45,6 +46,7 @@ const App = ({ notesList }) => {
   }
 
   const handleNoteChange = (event) => setNewNote(event.target.value)
+  const handleImportanceChange = (event) => setIsImportant(event.target.checked)
   
   if(notes === null) return null
 
@@ -70,6 +72,7 @@ const App = ({ notesList }) => {
 
       <form onSubmit={addNote}>
         <input type="text" value={newNote} onChange={handleNoteChange} />
+        <input type="checkbox" checked={isImportant} onChange={handleImportanceChange} />
         <button type="submit">save</button>
       </form>
 
