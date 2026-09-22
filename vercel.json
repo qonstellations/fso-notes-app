@@ -5,12 +5,9 @@
       "entrypoint": "backend/index.js",
       "framework": "express",
       "buildCommand": "npm run build",
-      "includeFiles": [
-        "backend/dist/**"
-      ]
+      "installCommand": "npm run install-all"
     }
   },
-
   "rewrites": [
     {
       "source": "/(.*)",
