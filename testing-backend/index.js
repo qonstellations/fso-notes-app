@@ -26,6 +26,10 @@ let notes = [
 ]
 
 // routes
+app.get('/', (req, res) => {
+  res.redirect('/health')
+})
+
 app.get('/health', (req, res) => {
   return res.json({
 		status: 'ok'
