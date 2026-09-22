@@ -1,0 +1,24 @@
+{
+  "name": "fso-notes-app",
+  "version": "1.0.0",
+  "description": "notes app built using mern stack for FSO",
+  "homepage": "https://github.com/qonstellations/fso-notes-app#readme",
+  "bugs": {
+    "url": "https://github.com/qonstellations/fso-notes-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qonstellations/fso-notes-app.git"
+  },
+  "license": "ISC",
+  "author": "qonstellations",
+  "scripts": {
+    "install-all": "npm install --prefix frontend && npm install --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm run build && node --env-file=backend/.env backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "prefix": "^1.0.0"
+  }
+}

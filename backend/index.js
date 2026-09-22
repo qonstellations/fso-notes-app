@@ -1,11 +1,17 @@
 import express from 'express'
 import cors from 'cors'
+import path from 'path'
+
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
 
 // middlewares
 app.use(cors())
-app.use(express.static('dist'))
+app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.json())
 
 let notes = [
@@ -96,14 +102,15 @@ app.delete('/api/notes/:id', (req, res) => {
 })
 
 // middleware for unknown endpoints
-const unknownEndpoint = (req, res) => {
-	res.status(404).json({
-	error: 'unknown endpoint'
-	})
-}
-app.use(unknownEndpoint)
+app.use('/api/*splat', (req, res) => {
+  res.status(404).json({ error: 'unknown api endpoint' })
+})
 
-const PORT =process.env.PORT || 3001
+app.get('*any', (req, res) => {
+  res.sendFile(path.join(import.meta.dirname, 'dist', 'index.html'))
+})
+
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on PORT ${PORT}`);
 })

@@ -2,22 +2,22 @@ import axios from 'axios'
 
 const baseURL = '/api/notes'
 
-const getAll = () => {
-  return axios
+const getAll = async () => {
+  const response = await axios
     .get(baseURL)
-    .then(response => response.data)
+  return response.data
 }
 
-const create = newNote => {
-  return axios
+const create = async newNote => {
+  const response = await axios
     .post(baseURL, newNote)
-    .then(response => response.data)
+  return response.data
 }
 
-const update = (id, updatedNote) => {
-  return axios
+const update = async (id, updatedNote) => {
+  const response = await axios
     .put(`${baseURL}/${id}`, updatedNote)
-    .then(response => response.data)
+  return response.data
 }
 
 export default { getAll, create, update }
