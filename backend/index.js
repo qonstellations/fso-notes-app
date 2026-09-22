@@ -11,7 +11,7 @@ const app = express()
 
 // middlewares
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 
 let notes = [
@@ -107,7 +107,7 @@ app.use('/api/*splat', (req, res) => {
 })
 
 app.get('*any', (req, res) => {
-  res.sendFile(path.join(import.meta.dirname, 'dist', 'index.html'))
+  res.sendFile(path.join(import.meta.dirname, 'public', 'index.html'))
 })
 
 export default app;

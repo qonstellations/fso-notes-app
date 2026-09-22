@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: path.resolve(import.meta.dirname, '../backend/dist'),
+    outDir: path.resolve(import.meta.dirname, '../backend/public'),
     emptyOutDir: true,
   },
 })

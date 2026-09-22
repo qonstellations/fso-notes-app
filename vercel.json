@@ -1,11 +1,9 @@
 {
   "services": {
     "app": {
-      "root": ".",
-      "entrypoint": "backend/index.js",
-      "framework": "express",
-      "buildCommand": "npm run build",
-      "installCommand": "npm run install-all"
+      "root": "backend/",
+      "entrypoint": "index.js",
+      "framework": "express"
     }
   },
   "rewrites": [
